@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Move Brick</title>
+    <link href="./style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <canvas id="canv"></canvas>
+    <script src="Utilities.js"></script>
+    <script src="Time.js"></script>
+    <script src="Component.js"></script>
+    <script src="GameObject.js"></script>
+    <script src="PlayerDrawComponent.js"></script>
+    <script src="PlayerUpdateComponent.js"></script>
+    <script src="PlayerGameObject.js"></script>
+    <script>
+        "use strict"
+
+        //setup the canvas
+        let { canvas, ctx } = getCanvas()
+        let gameObjects = []
+
+        //define the model
+        let x = 100
+        let y = 100
+        let w = 50
+        let h = 50
+
+        //check for arrow key input
+        //document.addEventListener("keydown", event)
+
+        //create new player
+        let player = new PlayerGameObject(x, y, w, h)
+        player.draw(ctx)
+        gameObjects.push(player)
+
+
+        function draw() {
+            //draw background
+            ctx.fillStyle = "grey"
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+
+            //draw rectangle
+            player.draw()
+
+            //this works
+            // ctx.lineWidth = 5
+            // ctx.strokeStyle = "black"
+            // ctx.strokeRect(x, y, w, h)
+
+
+        }
+
+        function update() {
+            player.update()
+        }
+
+        function tick() {
+            draw()
+            update()
+            Time.timePassed += Time.secondsBetweenFrame
+        }
+
+
+        //run it
+        setInterval(tick(), Time.millisecondsBetweenFrames)
+
+    </script>
+
+
+</body>
