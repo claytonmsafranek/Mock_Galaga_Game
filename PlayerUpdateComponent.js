@@ -1,6 +1,7 @@
 //define player
 let playerWidth = 50
 let playerHeight = 50
+let enemyArea = 25
 
 //define offset to move player
 let offset = 5
@@ -23,7 +24,7 @@ class PlayerUpdateComponent extends Component {
         if (rightArrowPress && !(this.x >= rightBoundary - playerWidth)) {
             this.x += offset
         }
-        if (upArrowPress && !(this.y <= topBoundary)) {
+        if (upArrowPress && !(this.y <= topBoundary + enemyArea)) {
             this.y -= offset
         }
         if (downArrowPress && !(this.y >= bottomBoundary - playerHeight)) {
