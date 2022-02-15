@@ -22,11 +22,17 @@
         let { canvas, ctx } = getCanvas()
         let gameObjects = []
 
+        let test = canvas.width
+
         //define the model
         let x = 100
         let y = 100
         let w = 50
         let h = 50
+        let leftBoundary = 0
+        let rightBoundary = canvas.width
+        let topBoundary = 0
+        let bottomBoundary = canvas.height
 
         //check for arrow key input
         document.addEventListener("keydown", (e) => detectKeyDown(e))

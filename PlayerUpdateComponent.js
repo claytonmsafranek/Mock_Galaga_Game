@@ -1,7 +1,9 @@
-let startX = 100
-let startY = 100
-let width = 50
-let height = 50
+//define player
+let playerWidth = 50
+let playerHeight = 50
+
+//define offset to move player
+let offset = 5
 
 class PlayerUpdateComponent extends Component {
     constructor(parent, x, y, w, h) {
@@ -14,18 +16,18 @@ class PlayerUpdateComponent extends Component {
     }
 
     update() {
-        //check for input from arrow keys, update location accordingly
-        if (leftArrowPress) {
-            this.x -= 5
+        //check for input from arrow keys, update location accordingly taking into account boundaries
+        if (leftArrowPress && !(this.x <= leftBoundary)) {
+            this.x -= offset
         }
-        if (rightArrowPress) {
-            this.x += 5
+        if (rightArrowPress && !(this.x >= rightBoundary - playerWidth)) {
+            this.x += offset
         }
-        if (upArrowPress) {
-            this.y -= 5
+        if (upArrowPress && !(this.y <= topBoundary)) {
+            this.y -= offset
         }
-        if (downArrowPress) {
-            this.y += 5
+        if (downArrowPress && !(this.y >= bottomBoundary - playerHeight)) {
+            this.y += offset
         }
 
     }
