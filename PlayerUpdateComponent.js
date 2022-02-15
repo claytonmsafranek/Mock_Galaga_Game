@@ -11,29 +11,39 @@ class PlayerUpdateComponent extends Component {
         this.y = y
         this.w = w
         this.h = h
-
     }
 
     update() {
-        document.addEventListener("keydown", (event) => {
-        switch (event.keyCode) {
-            case 37:
-                console.log("left arrow key pressed\n XPOS: " + this.x)
-                this.x -= 10
-                break
-            case 38:
-                console.log("up arrow key pressed\n YPOS: " + this.y)
-                this.y -= 10
-                break
-            case 39:
-                console.log("right arrow key pressed\n XPOS: " + this.x)
-                this.x += 10
-                break
-            case 40:
-                console.log("down arrow key pressed\n YPOS: " + this.y)
-                this.y += 10
-                break
+        if (leftArrowPress) {
+            this.x -= 5
         }
-        })
+        if (rightArrowPress) {
+            this.x += 5
+        }
+        if (upArrowPress) {
+            this.y -= 5
+        }
+        if (downArrowPress) {
+            this.y += 5
+        }
+        //document.addEventListener("keydown", (event) => {
+        // switch (keyType) {
+        //     case 37:
+        //         this.x -= 10
+        //         console.log("left arrow key pressed\n XPOS: " + this.x)
+        //         break
+        //     case 38:
+        //         this.y -= 10
+        //         console.log("up arrow key pressed\n YPOS: " + this.y)
+        //         break
+        //     case 39:
+        //         this.x += 10
+        //         console.log("right arrow key pressed\n XPOS: " + this.x)
+        //         break
+        //     case 40:
+        //         this.y += 10
+        //         console.log("down arrow key pressed\n YPOS: " + this.y)
+        //         break
+        //     }
     }
 }
