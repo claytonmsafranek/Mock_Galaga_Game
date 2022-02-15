@@ -14,6 +14,7 @@ class PlayerUpdateComponent extends Component {
     }
 
     update() {
+        //check for input from arrow keys, update location accordingly
         if (leftArrowPress) {
             this.x -= 5
         }
@@ -26,24 +27,6 @@ class PlayerUpdateComponent extends Component {
         if (downArrowPress) {
             this.y += 5
         }
-        //document.addEventListener("keydown", (event) => {
-        // switch (keyType) {
-        //     case 37:
-        //         this.x -= 10
-        //         console.log("left arrow key pressed\n XPOS: " + this.x)
-        //         break
-        //     case 38:
-        //         this.y -= 10
-        //         console.log("up arrow key pressed\n YPOS: " + this.y)
-        //         break
-        //     case 39:
-        //         this.x += 10
-        //         console.log("right arrow key pressed\n XPOS: " + this.x)
-        //         break
-        //     case 40:
-        //         this.y += 10
-        //         console.log("down arrow key pressed\n YPOS: " + this.y)
-        //         break
-        //     }
+
     }
 }

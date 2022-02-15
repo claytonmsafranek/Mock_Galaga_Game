@@ -37,36 +37,34 @@
         let upArrowPress = false
         let downArrowPress = false
 
+        //create new player
+        let player = new PlayerGameObject(x, y, w, h)
+        gameObjects.push(player)
 
 
-            //create new player
-            let player = new PlayerGameObject(x, y, w, h)
-            gameObjects.push(player)
+        function draw() {
+            //draw background
+            ctx.fillStyle = "grey"
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+
+            //draw rectangle
+            player.draw()
+
+        }
+
+        function update() {
+            player.update()
+        }
+
+        function tick() {
+            update()
+            draw()
+            Time.timePassed += Time.secondsBetweenFrame
+        }
 
 
-            function draw() {
-                //draw background
-                ctx.fillStyle = "grey"
-                ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-
-                //draw rectangle
-                player.draw()
-
-            }
-
-            function update() {
-                player.update()
-            }
-
-            function tick() {
-                update()
-                draw()
-                Time.timePassed += Time.secondsBetweenFrame
-            }
-
-
-            //run it
-            setInterval(tick, Time.millisecondsBetweenFrames)
+        //run it
+        setInterval(tick, Time.millisecondsBetweenFrames)
 
     </script>
 

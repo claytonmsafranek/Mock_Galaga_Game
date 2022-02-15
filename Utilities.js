@@ -7,6 +7,7 @@ function getCanvas() {
   return { canvas, ctx };
 }
 
+//function to detect when a key has been pressed
 function detectKeyDown(e) {
   switch (e.keyCode) {
     case 37:
@@ -28,6 +29,7 @@ function detectKeyDown(e) {
   }
 }
 
+//function to detect when a key has been released
 function detectKeyUp(e) {
   switch (e.keyCode) {
     case 37:
