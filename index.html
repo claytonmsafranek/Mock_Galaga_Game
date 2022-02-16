@@ -18,6 +18,9 @@
     <script src="EnemyDrawComponent.js"></script>
     <script src="EnemyUpdateComponent.js"></script>
     <script src="EnemyGameObject.js"></script>
+    <script src="BulletDrawComponent.js"></script>
+    <script src="BulletUpdateComponent.js"></script>
+    <script src="BulletGameObject.js"></script>
 
     <script>
         "use strict"
@@ -47,13 +50,25 @@
         //create enemies
         let numEnemies = 5
         for (let i = 0; i < numEnemies; i++) {
-            let offset = (canvas.width / 5) 
+            let offset = (canvas.width / 5)
             let enemyX = 50 + offset * i
             let enemyY = 0
             let enemyW = 25
             let enemyH = 25
 
             gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH))
+        }
+
+        //create bullets
+        let numBullets = 5
+        for (let i = 0; i < numBullets; i++) {
+            let offset = (canvas.width / 5)
+            let bulletX = 50 + offset * i
+            let bulletY = 50
+            let bulletW = 5
+            let bulletH = 25
+
+            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH))
         }
 
         //create player
@@ -74,10 +89,17 @@
                 enemy.draw(ctx)
             }
 
+            //draw bullets
+            for (let bullet of gameObjects) {
+                bullet.draw(ctx)
+            }
+
         }
 
         function update() {
             player.update()
+            //currently no enemy update - don't know what to do yet
+            //currently no bullet update - don't know what to do yet
         }
 
         function tick() {
