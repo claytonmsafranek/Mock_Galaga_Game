@@ -50,3 +50,15 @@ function detectKeyUp(e) {
       break
   }
 }
+
+function getRandomX(minRange, maxRange) {
+  let min = Math.ceil(minRange)
+  let max = Math.floor(maxRange);
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function getRandomY(minRange, maxRange) {
+  let min = Math.ceil(minRange)
+  let max = Math.floor(maxRange);
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}

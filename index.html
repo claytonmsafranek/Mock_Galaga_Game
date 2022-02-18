@@ -38,20 +38,26 @@
         let downArrowPress = false
 
         //define the model
-        let playerX = 100
-        let playerY = 100
+        let playerX = canvas.width / 2
+        let playerY = 1100
         let playerW = 50
         let playerH = 50
-        let leftBoundary = 0
-        let rightBoundary = canvas.width
-        let topBoundary = 0
-        let bottomBoundary = canvas.height
+        let leftPlayerBoundary = 0
+        let rightPlayerBoundary = canvas.width
+        let topPlayerBoundary = 0
+        let bottomPlayerBoundary = canvas.height
+        let leftBulletBoundary = 0
+        let rightBulletBoundary = canvas.width
+
+        //create player
+        let player = new PlayerGameObject(playerX, playerY, playerW, playerH)
+        gameObjects.push(player)
 
         //create enemies
         let numEnemies = 5
         for (let i = 0; i < numEnemies; i++) {
             let offset = (canvas.width / 5)
-            let enemyX = 50 + offset * i
+            let enemyX = 100 + offset * i
             let enemyY = 0
             let enemyW = 25
             let enemyH = 25
@@ -59,21 +65,24 @@
             gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH))
         }
 
-        //create bullets
+        //create stationary bullets
         let numBullets = 5
         for (let i = 0; i < numBullets; i++) {
             let offset = (canvas.width / 5)
-            let bulletX = 50 + offset * i
-            let bulletY = 50
+            //bulletX looks weird, but this positions bullets right in the center of enemies
+            let bulletX = 50 + (canvas.width / 5) * i + 62
+            let bulletY = 10
             let bulletW = 5
             let bulletH = 25
 
-            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH))
+            //create a test moving projectile to get timint down
+            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0,1), getRandomY(1,0)))
+
+            //below are 5 bullets that stay stationary just to simulate where they will be firing from
+            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
 
-        //create player
-        let player = new PlayerGameObject(playerX, playerY, playerW, playerH)
-        gameObjects.push(player)
+
 
 
         function draw() {
@@ -98,8 +107,10 @@
 
         function update() {
             player.update()
+            for (let bullet of gameObjects) {
+                bullet.update()
+            }
             //currently no enemy update - don't know what to do yet
-            //currently no bullet update - don't know what to do yet
         }
 
         function tick() {
