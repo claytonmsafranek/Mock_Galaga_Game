@@ -39,7 +39,7 @@
 
         //define the model
         let playerX = canvas.width / 2
-        let playerY = 1100
+        let playerY = canvas.height / 1.25
         let playerW = 50
         let playerH = 50
         let leftPlayerBoundary = 0
@@ -76,11 +76,25 @@
             let bulletH = 25
 
             //create a test moving projectile to get timint down
-            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0,1), getRandomY(1,0)))
+            //gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0,1), getRandomY(1,0)))
 
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
             gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
+
+        //continusously push new bullet objects to screen
+        let num = 5
+        for (let j = 0; j < num; j++) {
+            let offset = (canvas.width / 5)
+            let bulletX = 50 + offset * j + 62
+            let bulletY = 10
+            let bulletW = 5
+            let bulletH = 25
+
+            setInterval(gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0,5), getRandomY(5,0))), Time.secondsBetweenBullets)
+
+        }
+        //setTimeinterval(create new bullet game object here, Time.secondsBetweenBullet)
 
 
 

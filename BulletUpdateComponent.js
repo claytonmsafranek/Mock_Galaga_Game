@@ -25,5 +25,8 @@ class BulletUpdateComponent extends Component {
         this.x += this.velocityX
         this.y += this.velocityY
 
+        //might need to add a check in to see if a bullet game object goes off t he screen, remove it 
+        //from gameObjects to keep game from backing up and becoming slow
+
     }
 }
