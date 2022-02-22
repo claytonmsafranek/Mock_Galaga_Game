@@ -1,3 +1,6 @@
+import Component from "../engine/Component.js"
+import Time from "../engine/Time.js"
+
 //define player
 let enemyWidth = 50
 let enemyHeight = 50
@@ -16,3 +19,5 @@ class EnemyUpdateComponent extends Component {
         
     }
 }
+
+export default EnemyUpdateComponent

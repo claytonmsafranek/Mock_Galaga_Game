@@ -1,3 +1,7 @@
+import Component from "../engine/Component.js"
+import Time from "../engine/Time.js"
+import BulletUpdateComponent from "../game/BulletUpdateComponent.js"
+
 class BulletDrawComponent extends Component {
     constructor(parent) {
         super(parent)
@@ -20,3 +24,5 @@ class BulletDrawComponent extends Component {
         ctx.stroke();
     }
 }
+
+export default BulletDrawComponent

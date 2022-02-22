@@ -1,3 +1,8 @@
+import Component from "../engine/Component.js"
+import GameObject from "../engine/GameObject.js"
+import BulletUpdateComponent from "../game/BulletUpdateComponent.js"
+import BulletDrawComponent from "../game/BulletDrawComponent.js"
+
 class BulletGameObject extends GameObject {
     constructor(x, y, w, h, velocityX, velocityY) {
         super()
@@ -10,7 +15,9 @@ class BulletGameObject extends GameObject {
         this.components.filter(c=>c.update).forEach(c=>c.update())
     }
 
-    draw() {
+    draw(ctx) {
         this.components.filter(c=>c.draw).forEach(c=>c.draw(ctx))
     }
 }
+
+export default BulletGameObject

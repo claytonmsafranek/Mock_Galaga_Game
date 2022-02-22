@@ -3,3 +3,5 @@ class Component {
         this.parent = parent
     }
 }
+
+export default Component

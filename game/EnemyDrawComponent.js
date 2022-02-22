@@ -1,3 +1,7 @@
+import Component from "../engine/Component.js"
+import GameObject from "../engine/GameObject.js"
+import EnemyUpdateComponent from "../game/EnemyUpdateComponent.js"
+
 class EnemyDrawComponent extends Component {
     constructor(parent) {
         super(parent)
@@ -22,3 +26,5 @@ class EnemyDrawComponent extends Component {
 
 
 }
+
+export default EnemyDrawComponent

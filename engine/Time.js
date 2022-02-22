@@ -7,3 +7,5 @@ class Time {
     static secondsBetweenBullets = 1
     static timePassedBullets = 0
 }
+
+export default Time

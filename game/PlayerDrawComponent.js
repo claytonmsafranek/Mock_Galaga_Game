@@ -1,3 +1,8 @@
+import Component from "../engine/Component.js"
+import GameObject from "../engine/GameObject.js"
+import PlayerUpdateComponent from "../game/PlayerUpdateComponent.js"
+import {getCanvas, detectKeyDown, detectKeyUp, getRandomX, getRandomY} from "../engine/Utilities.js"
+
 class PlayerDrawComponent extends Component {
     constructor(parent) {
         super(parent)
@@ -19,6 +24,6 @@ class PlayerDrawComponent extends Component {
         ctx.fill();
         ctx.stroke();
     }
-
-
 }
+
+export default PlayerDrawComponent

@@ -1,3 +1,5 @@
+import Input from "../engine/Input.js"
+
 function getCanvas() {
   let canvas = document.querySelector("#canv");
   let ctx = canvas.getContext("2d");
@@ -12,19 +14,19 @@ function detectKeyDown(e) {
   switch (e.keyCode) {
     case 37:
       console.log("left arrow key pressed")
-      leftArrowPress = true
+      Input.leftArrowPress = true
       break
     case 38:
       console.log("up arrow key pressed")
-      upArrowPress = true
+      Input.upArrowPress = true
       break
     case 39:
       console.log("right arrow key pressed")
-      rightArrowPress = true
+      Input.rightArrowPress = true
       break
     case 40:
       console.log("down arrow key pressed")
-      downArrowPress = true
+      Input.downArrowPress = true
       break
   }
 }
@@ -34,19 +36,19 @@ function detectKeyUp(e) {
   switch (e.keyCode) {
     case 37:
       console.log("left arrow key released")
-      leftArrowPress = false
+      Input.leftArrowPress = false
       break
     case 38:
       console.log("up arrow key released")
-      upArrowPress = false
+      Input.upArrowPress = false
       break
     case 39:
       console.log("right arrow key released")
-      rightArrowPress = false
+      Input.rightArrowPress = false
       break
     case 40:
       console.log("down arrow key released")
-      downArrowPress = false
+      Input.downArrowPress = false
       break
   }
 }
@@ -62,3 +64,5 @@ function getRandomY(minRange, maxRange) {
   let max = Math.floor(maxRange);
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+export {getCanvas, detectKeyDown, detectKeyUp, getRandomX, getRandomY}
