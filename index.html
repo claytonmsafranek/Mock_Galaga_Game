@@ -53,10 +53,6 @@
         //check for arrow key input
         document.addEventListener("keydown", (e) => detectKeyDown(e))
         document.addEventListener("keyup", (e) => detectKeyUp(e))
-        // let leftArrowPress = false
-        // let rightArrowPress = false
-        // let upArrowPress = false
-        // let downArrowPress = false
 
         //define the model
         let playerX = canvas.width / 2
@@ -64,8 +60,6 @@
         let playerW = 50
         let playerH = 50
         
-
-
         //create player
         let player = new PlayerGameObject(playerX, playerY, playerW, playerH)
         gameObjects.push(player)
@@ -99,7 +93,7 @@
             gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
 
-        //continusously push new bullet objects to screen
+        //continusously push new bullet objects to screen here????
         let num = 5
         for (let j = 0; j < num; j++) {
             let offset = (canvas.width / 5)
@@ -107,10 +101,8 @@
             let bulletY = 10
             let bulletW = 5
             let bulletH = 25
-
-            //setInterval(gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0,5), getRandomY(5,0))), Time.secondsBetweenBullets)
-
         }
+        //push new bullet objects to screen here????
         //setTimeinterval(create new bullet game object here, Time.secondsBetweenBullet)
 
 
