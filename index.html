@@ -25,7 +25,7 @@
     <script type="module">
         "use strict"
         //generic engine code
-        import {getCanvas, detectKeyDown, detectKeyUp, getRandomX, getRandomY} from "./engine/Utilities.js"
+        import { getCanvas, detectKeyDown, detectKeyUp, getRandomX, getRandomY } from "./engine/Utilities.js"
         import Time from "./engine/Time.js"
         import GameObject from "./engine/GameObject.js"
         import Component from "./engine/Component.js"
@@ -35,11 +35,11 @@
         import PlayerGameObject from "./game/PlayerGameObject.js"
         import PlayerUpdateComponent from "./game/PlayerUpdateComponent.js"
         import PlayerDrawComponent from "./game/PlayerDrawComponent.js"
-        
+
         import EnemyGameObject from "./game/EnemyGameObject.js"
         import EnemyUpdateComponent from "./game/EnemyUpdateComponent.js"
         import EnemyDrawComponent from "./game/EnemyDrawComponent.js"
-        
+
         import BulletGameObject from "./game/BulletGameObject.js"
         import BulletUpdateComponent from "./game/BulletUpdateComponent.js"
         import BulletDrawComponent from "./game/BulletDrawComponent.js"
@@ -59,7 +59,7 @@
         let playerY = canvas.height / 1.25
         let playerW = 50
         let playerH = 50
-        
+
         //create player
         let player = new PlayerGameObject(playerX, playerY, playerW, playerH)
         gameObjects.push(player)
@@ -87,7 +87,7 @@
             let bulletH = 25
 
             //create a test moving projectile to get timint down
-            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0,2), getRandomY(2,0)))
+            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0, 2), getRandomY(2, 0)))
 
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
             gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
@@ -95,12 +95,16 @@
 
         //continusously push new bullet objects to screen here????
         let num = 5
-        for (let j = 0; j < num; j++) {
-            let offset = (canvas.width / 5)
-            let bulletX = 50 + offset * j + 62
-            let bulletY = 10
-            let bulletW = 5
-            let bulletH = 25
+        function makeBullet() {
+            for (let j = 0; j < num; j++) {
+                let offset = (canvas.width / 5)
+                let bulletX = 50 + offset * j + 62
+                let bulletY = 10
+                let bulletW = 5
+                let bulletH = 25
+
+                gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0, 5), getRandomY(5, 0)))
+            }
         }
         //push new bullet objects to screen here????
         //setTimeinterval(create new bullet game object here, Time.secondsBetweenBullet)
@@ -145,6 +149,9 @@
 
         //run it
         setInterval(tick, Time.millisecondsBetweenFrames)
+        
+        //shoot bullets
+        setInterval(makeBullet, Time.millisecondsBetweenBullets)
 
     </script>
 

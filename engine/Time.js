@@ -4,7 +4,7 @@ class Time {
     static timePassed = 0
 
     //specify how often to fire bullets
-    static secondsBetweenBullets = 1
+    static millisecondsBetweenBullets = 2000
     static timePassedBullets = 0
 }
 
