@@ -25,7 +25,7 @@
     <script type="module">
         "use strict"
         //generic engine code
-        import { getCanvas, detectKeyDown, detectKeyUp, getRandomX, getRandomY } from "./engine/Utilities.js"
+        import { getCanvas, getContext, detectKeyDown, detectKeyUp, getRandomX, getRandomY } from "./engine/Utilities.js"
         import Time from "./engine/Time.js"
         import GameObject from "./engine/GameObject.js"
         import Component from "./engine/Component.js"
@@ -47,7 +47,9 @@
 
 
         //setup the canvas
-        let { canvas, ctx } = getCanvas()
+        //let { canvas, ctx } = getCanvas()
+        let canvas = getCanvas()
+        let ctx = getContext(canvas)
         let gameObjects = []
 
         //check for arrow key input
