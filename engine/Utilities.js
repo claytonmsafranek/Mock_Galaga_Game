@@ -2,11 +2,17 @@ import Input from "../engine/Input.js"
 
 function getCanvas() {
   let canvas = document.querySelector("#canv");
-  let ctx = canvas.getContext("2d");
+  //let ctx = canvas.getContext("2d");
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  return { canvas, ctx };
+  //return { canvas, ctx };
+  return canvas
+}
+
+function getContext(canvas) {
+  let ctx = canvas.getContext("2d")
+  return ctx
 }
 
 //function to detect when a key has been pressed
@@ -65,4 +71,4 @@ function getRandomY(minRange, maxRange) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-export {getCanvas, detectKeyDown, detectKeyUp, getRandomX, getRandomY}
+export {getCanvas, getContext, detectKeyDown, detectKeyUp, getRandomX, getRandomY}
