@@ -2,6 +2,7 @@ import Component from "../engine/Component.js"
 import {getCanvas, getRandomX, getRandomY} from "../engine/Utilities.js"
 import Constants from "../game/Constants.js"
 import Time from "../engine/Time.js"
+import PlayerUpdateComponent from "./PlayerUpdateComponent.js"
 
 class BulletUpdateComponent extends Component {
     constructor(parent, x, y, w, h, velocityX, velocityY) {
@@ -28,12 +29,17 @@ class BulletUpdateComponent extends Component {
         }
 
         //hasn't hit either side, continue normal
-        this.x += this.velocityX
-        this.y += this.velocityY
+        this.x = this.x + this.velocityX
+        this.y = this.y + this.velocityY
 
         //might need to add a check in to see if a bullet game object goes off t he screen, remove it 
         //from gameObjects to keep game from backing up and becoming slow
+    }
 
+    getX() {
+        let val = this.x
+        //return this.x() //this doesn't
+        console.log(val) //this works
     }
 }
 

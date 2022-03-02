@@ -7,21 +7,9 @@
 </head>
 
 <body>
+    
     <canvas id="canv"></canvas>
-    <!-- <script src="Utilities.js"></script> -->
-    <!-- <script src="Time.js"></script> -->
-    <!-- <script src="Component.js"></script> -->
-    <!-- <script src="GameObject.js"></script> -->
-    <!-- <script src="PlayerDrawComponent.js"></script> -->
-    <!-- <script src="PlayerUpdateComponent.js"></script> -->
-    <!-- <script src="PlayerGameObject.js"></script> -->
-    <!-- <script src="EnemyDrawComponent.js"></script> -->
-    <!-- <script src="EnemyUpdateComponent.js"></script> -->
-    <!-- <script src="EnemyGameObject.js"></script> -->
-    <!-- <script src="BulletDrawComponent.js"></script> -->
-    <!-- <script src="BulletUpdateComponent.js"></script> -->
-    <!-- <script src="BulletGameObject.js"></script> -->
-
+    
     <script type="module">
         "use strict"
         //generic engine code
@@ -88,9 +76,6 @@
             let bulletW = 5
             let bulletH = 25
 
-            //create a test moving projectile to get timint down
-            gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0, 2), getRandomY(2, 0)))
-
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
             gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
@@ -108,14 +93,8 @@
                 gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0, 5), getRandomY(5, 0)))
             }
         }
-        //push new bullet objects to screen here????
-        //setTimeinterval(create new bullet game object here, Time.secondsBetweenBullet)
-
-
-
 
         function draw() {
-            //draw background
             ctx.fillStyle = "grey"
             ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
@@ -138,8 +117,9 @@
             player.update()
             for (let bullet of gameObjects) {
                 bullet.update()
+                //let pos = bullet.getX()
+                //console.log("bullet pos: " + pos)
             }
-            //currently no enemy update - don't know what to do yet
         }
 
         function tick() {
@@ -151,7 +131,7 @@
 
         //run it
         setInterval(tick, Time.millisecondsBetweenFrames)
-        
+
         //shoot bullets
         setInterval(makeBullet, Time.millisecondsBetweenBullets)
 
