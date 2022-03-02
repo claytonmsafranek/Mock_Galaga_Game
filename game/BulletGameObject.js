@@ -1,4 +1,3 @@
-import Component from "../engine/Component.js"
 import GameObject from "../engine/GameObject.js"
 import BulletUpdateComponent from "../game/BulletUpdateComponent.js"
 import BulletDrawComponent from "../game/BulletDrawComponent.js"
