@@ -35,9 +35,8 @@ class BulletUpdateComponent extends Component {
     }
 
     getX() {
-        let val = this.x
         //return this.x() //this doesn't
-        console.log(val) //this works
+        console.log(this.x) //this works
     }
 }
 
