@@ -1,9 +1,10 @@
 import Component from "../engine/Component.js"
 import Constants from "../game/Constants.js"
 import Input from "../engine/Input.js"
+import Time from "../engine/Time.js"
 
 //define offset to move player
-let offset = 1
+let offset = 10
 
 class PlayerUpdateComponent extends Component {
     constructor(parent, x, y, w, h) {
@@ -18,16 +19,20 @@ class PlayerUpdateComponent extends Component {
     update() {
         //check for input from arrow keys, update location accordingly taking into account boundaries
         if (Input.leftArrowPress && !(this.x <= Constants.leftPlayerBoundary)) {
-            this.x -= offset
+            //this.x -= offset
+            this.x -= offset * Time.secondsBetweenFrame
         }
         if (Input.rightArrowPress && !(this.x >= Constants.rightPlayerBoundary - Constants.playerWidth)) {
-            this.x += offset
+            //this.x += offset
+            this.x += offset * Time.secondsBetweenFrame
         }
         if (Input.upArrowPress && !(this.y <= Constants.topPlayerBoundary + Constants.enemyArea)) {
-            this.y -= offset
+            //this.y -= offset
+            this.y -= offset * Time.secondsBetweenFrame
         }
         if (Input.downArrowPress && !(this.y >= Constants.bottomPlayerBoundary - Constants.playerHeight)) {
-            this.y += offset
+            // this.y += offset
+            this.y += offset * Time.secondsBetweenFrame
         }
 
         //check if player is colliding with a bullet at all
@@ -36,8 +41,15 @@ class PlayerUpdateComponent extends Component {
         let playerBottomLeft = this.y + Constants.playerHeight
         let playerBottomRight = this.x + Constants.playerWidth + Constants.playerHeight
 
-        //let pos = BulletUpdateComponent.getX()
-        //console.log("bullet position: " + pos)
+        //let pos = this.parent.getComponent("bullet")
+
+
+        //let bulletObjects = Game.findByType("BulletGameObject")
+        //console.log(bulletObjects.length)
+        //let bullets = bulletObjects.map(w=>w.getComponent("bullet"))
+        //let minX = Math.min(...bullets.map(r=>r.x))
+        //let minY = Math.min(...bullets.map(r=>r.y))
+
     }
 }
 

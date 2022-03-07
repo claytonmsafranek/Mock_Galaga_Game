@@ -1,6 +1,7 @@
 import Component from "../engine/Component.js"
 import {getCanvas, getRandomX, getRandomY} from "../engine/Utilities.js"
 import Constants from "../game/Constants.js"
+import Time from "../engine/Time.js"
 
 class BulletUpdateComponent extends Component {
     constructor(parent, x, y, w, h, velocityX, velocityY) {
@@ -22,22 +23,19 @@ class BulletUpdateComponent extends Component {
         //add on velocity to x and y coordinates - check for boundaries
         if (this.x >= Constants.rightBulletBoundary - 6 || this.x <= Constants.leftBulletBoundary) {
             //hit right or left side, change direction
-            this.velocityX = -1 * this.velocityX
-
+            this.velocityX = (-1 * this.velocityX) 
         }
 
         //hasn't hit either side, continue normal
-        this.x = this.x + this.velocityX
-        this.y = this.y + this.velocityY
+        this.x = this.x + this.velocityX * Time.secondsBetweenFrame
+        this.y = this.y + this.velocityY * Time.secondsBetweenFrame
 
-        //might need to add a check in to see if a bullet game object goes off t he screen, remove it 
-        //from gameObjects to keep game from becoming slowww
     }
 
-    getX() {
-        //return this.x() //this doesn't
-        console.log(this.x) //this works
-    }
+    // getX() {
+    //     //return this.x() //this doesn't
+    //     console.log(this.x) //this works
+    // }
 }
 
 export default BulletUpdateComponent

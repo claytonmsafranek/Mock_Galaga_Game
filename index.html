@@ -7,9 +7,9 @@
 </head>
 
 <body>
-    
+
     <canvas id="canv"></canvas>
-    
+
     <script type="module">
         "use strict"
         //generic engine code
@@ -18,6 +18,7 @@
         import GameObject from "./engine/GameObject.js"
         import Component from "./engine/Component.js"
         import Input from "./engine/Input.js"
+        import Text from "./engine/Text.js"
 
         //game specific code
         import PlayerGameObject from "./game/PlayerGameObject.js"
@@ -49,6 +50,10 @@
         let playerY = canvas.height / 1.25
         let playerW = 50
         let playerH = 50
+
+        //create text
+        let test = new Text(100, 100, "TEST", "serif")
+        gameObjects.push(test)
 
         //create player
         let player = new PlayerGameObject(playerX, playerY, playerW, playerH)
@@ -90,9 +95,11 @@
                 let bulletW = 5
                 let bulletH = 25
 
-                gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(0, 5), getRandomY(5, 0)))
+                gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
             }
         }
+
+
 
         function draw() {
             ctx.fillStyle = "grey"
@@ -111,14 +118,15 @@
                 bullet.draw(ctx)
             }
 
+            //draw text
+            text.draw(ctx)
+
         }
 
         function update() {
             player.update()
             for (let bullet of gameObjects) {
                 bullet.update()
-                //let pos = bullet.getX()
-                //console.log("bullet pos: " + pos)
             }
         }
 

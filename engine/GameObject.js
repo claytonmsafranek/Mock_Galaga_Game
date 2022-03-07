@@ -11,8 +11,8 @@ class GameObject {
         this.components.filter(c => c.draw).forEach(c => c.draw());
     }
     
-    getX() {
-        this.components.filter(c=>c.getX).forEach(c=>c.getX()) //not sure if this is convention
+    getComponent(componentString) {
+        return this.components.find(c=>c.constructor.name == componentString)
     }
 
 }
