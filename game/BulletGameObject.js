@@ -18,9 +18,6 @@ class BulletGameObject extends GameObject {
         this.components.filter(c=>c.draw).forEach(c=>c.draw(ctx))
     }
 
-    // getX() {
-    //     this.components.filter(c=>c.getX).forEach(c=>c.getX()) //not sure if this is convention
-    // }
 }
 
 export default BulletGameObject

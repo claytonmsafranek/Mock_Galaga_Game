@@ -1,4 +1,5 @@
 import Input from "../engine/Input.js"
+//import BulletGameObject from "../game/BulletGameObject.js";
 
 function getCanvas() {
   let canvas = document.querySelector("#canv");
@@ -70,5 +71,20 @@ function getRandomY(minRange, maxRange) {
   let max = Math.floor(maxRange);
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+// let num = 5
+// function makeBullet() {
+//   let bullets = []
+//     for (let j = 0; j < num; j++) {
+//         let offset = (getCanvas().width / 5)
+//         let bulletX = 50 + offset * j + 62
+//         let bulletY = 10
+//         let bulletW = 5
+//         let bulletH = 25
+
+//         let bullet = new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25))
+//     }
+//     return bullets
+// }
 
 export {getCanvas, getContext, detectKeyDown, detectKeyUp, getRandomX, getRandomY}
