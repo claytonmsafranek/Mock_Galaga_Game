@@ -5,6 +5,7 @@ import EnemyGameObject from "./EnemyGameObject.js"
 import { getCanvas, getRandomX, getRandomY } from "../engine/Utilities.js"
 import Time from "../engine/Time.js"
 
+
 class MainScene extends Scene {
     constructor() {
         super("Main Game Scene")
@@ -62,28 +63,37 @@ class MainScene extends Scene {
         //     return bullets
         // }
 
-        function makeBullet() {
-            let bullets = []
-            let num = 5
-            for (let j = 0; j < num; j++) {
-                let offset = (canvas.width / 5)
-                let bulletX = 50 + offset * j + 62
-                let bulletY = 10
-                let bulletW = 5
-                let bulletH = 25
-
-                //bullets.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
-                this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
-            }
-            //return bullets
+        //create bullets
+        //console.log("HIT 1")
+        if (Time.timePassedBullets >= 2000) {
+            console.log("makebullet called")
+            this.makeBullet()
+            //Time.timePassedBullets = 0
         }
-
-        //setInterval(this.gameObjects.push(makeBullet), Time.millisecondsBetweenBullets)
-        //setInterval(makeBullet, Time.millisecondsBetweenBullets)
-
+        else {
+            console.log("timepassedBullets value: " + Time.timePassedBullets)
+        }
+        //console.log("HIT 2")
 
 
     }
+
+    makeBullet() {
+        let canvas = getCanvas()
+        let num = 5
+        for (let j = 0; j < num; j++) {
+            let offset = (canvas.width / 5)
+            let bulletX = 50 + offset * j + 62
+            let bulletY = 10
+            let bulletW = 5
+            let bulletH = 25
+
+            //bullets.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
+            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
+        }
+    }
+    
+
 }
 
 export default MainScene

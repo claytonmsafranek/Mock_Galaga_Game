@@ -20,6 +20,10 @@ class Scene {
         }
     }
 
+    // remove() {
+    //     this.gameObjects = this.gameObjects.filter(g=>!g.markForDelete)
+    // }
+
 }
 
 export default Scene

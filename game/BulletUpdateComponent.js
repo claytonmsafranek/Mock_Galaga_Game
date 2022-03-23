@@ -13,6 +13,7 @@ class BulletUpdateComponent extends Component {
         this.h = h
         this.velocityX = velocityX
         this.velocityY = velocityY
+        //this.timePassed = 0
     }
 
     update() {
@@ -32,10 +33,6 @@ class BulletUpdateComponent extends Component {
 
     }
 
-    // getX() {
-    //     //return this.x() //this doesn't
-    //     console.log(this.x) //this works
-    // }
 }
 
 export default BulletUpdateComponent
