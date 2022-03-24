@@ -9,7 +9,9 @@ import Time from "../engine/Time.js"
 class MainScene extends Scene {
     constructor() {
         super("Main Game Scene")
+    }
 
+    start() {
         let canvas = getCanvas()
 
         //add the player
@@ -31,6 +33,7 @@ class MainScene extends Scene {
             let enemyH = 25
 
             this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH))
+            console.log("pushed enemy game object")
         }
 
         //create stationary bullets on top of red enemies
@@ -64,8 +67,7 @@ class MainScene extends Scene {
         // }
 
         //create bullets
-        //console.log("HIT 1")
-        if (Time.timePassedBullets >= 2000) {
+        if (Time.timePassedBullets >= 200) {
             console.log("makebullet called")
             this.makeBullet()
             //Time.timePassedBullets = 0
@@ -73,10 +75,9 @@ class MainScene extends Scene {
         else {
             console.log("timepassedBullets value: " + Time.timePassedBullets)
         }
-        //console.log("HIT 2")
-
 
     }
+
 
     makeBullet() {
         let canvas = getCanvas()
@@ -88,11 +89,10 @@ class MainScene extends Scene {
             let bulletW = 5
             let bulletH = 25
 
-            //bullets.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
             this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
         }
     }
-    
+
 
 }
 

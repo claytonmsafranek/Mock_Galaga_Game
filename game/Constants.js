@@ -4,6 +4,7 @@ class Constants {
     //bullet boundaries
     static leftBulletBoundary = 0
     static rightBulletBoundary = getCanvas().width
+    static bottomBulletBoundary = getCanvas().height
 
     //player boundaries
     static leftPlayerBoundary = 0

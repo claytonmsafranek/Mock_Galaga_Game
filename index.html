@@ -40,6 +40,7 @@
         import MainScene from "./game/MainScene.js"
         let scene = new MainScene()
         Game.scenes.push(scene)
+        Game.changeScene(0)
 
 
 
@@ -108,54 +109,59 @@
 
 
 
-        function draw() {
-            // ctx.fillStyle = "grey"
-            // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        // function draw() {
+        //     // ctx.fillStyle = "grey"
+        //     // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
-            //draw player
-            //player.draw(ctx)
+        //     //draw player
+        //     //player.draw(ctx)
 
-            //draw enemies
-            // for (let enemy of gameObjects) {
-            //     enemy.draw(ctx)
-            // }
+        //     //draw enemies
+        //     // for (let enemy of gameObjects) {
+        //     //     enemy.draw(ctx)
+        //     // }
 
-            //draw bullets
-            // for (let bullet of gameObjects) {
-            //     bullet.draw(ctx)
-            // }
+        //     //draw bullets
+        //     // for (let bullet of gameObjects) {
+        //     //     bullet.draw(ctx)
+        //     // }
 
-            //moving to scenes
-            Game.scene().draw(ctx)
+        //     //moving to scenes
+        //     Game.scene().draw(ctx)
 
-        }
+        // }
 
-        function update() {
-            //player.update()
-            // for (let bullet of gameObjects) {
-            //     bullet.update()
-            // }
+        // function update() {
+        //     //player.update()
+        //     // for (let bullet of gameObjects) {
+        //     //     bullet.update()
+        //     // }
 
-            //moving to scenes
-            Game.scene().update()
+        //     //moving to scenes
+        //     Game.scene().update()
+        //     if (Time.timePassedBullets >= 6000) {
+        //         scene.makeBullet()
+        //         Time.timePassedBullets = 0
+        //     }
+        //     else {
+        //         //console.log("time.timePassedBullets value = " + Time.timePassedBullets)
+        //     }
+
+        // }
+
+        function tick() {
+            Game.updateScene() //*need to get this to work
+            //check for timining between bullets
             if (Time.timePassedBullets >= 6000) {
                 scene.makeBullet()
                 Time.timePassedBullets = 0
             }
-            else {
-                console.log("time.timePassedBullets value = " + Time.timePassedBullets)
-            }
+            Game.scene().update(ctx)
+            Game.scene().draw(ctx)
+            Game.scene().remove()
 
-        }
-
-        function tick() {
-            update()
-            draw()
-            //remove()
             Time.timePassed += Time.secondsBetweenFrame
             Time.timePassedBullets += Time.millisecondsBetweenBullets
-            //console.log(Time.timePassedBullets)
-            //Time.millisecondsBetweenBullets += Time.timePassedBullets
         }
 
 

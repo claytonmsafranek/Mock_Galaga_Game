@@ -1,12 +1,17 @@
 class Scene {
     constructor(title) {
         this.title = title
-        this.gameObjects = []
+        //this.gameObjects = []
     }
 
-    update() {
+    restart() {
+        this.gameObjects = []
+        this.start()
+    }
+
+    update(ctx) {
         for (let gameObject of this.gameObjects) {
-            gameObject.update()
+            gameObject.update(ctx)
         }
     }
 
@@ -20,9 +25,9 @@ class Scene {
         }
     }
 
-    // remove() {
-    //     this.gameObjects = this.gameObjects.filter(g=>!g.markForDelete)
-    // }
+    remove() {
+        this.gameObjects = this.gameObjects.filter(g=>!g.markForDelete)
+    }
 
 }
 

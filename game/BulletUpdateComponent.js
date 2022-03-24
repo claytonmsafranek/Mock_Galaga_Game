@@ -1,5 +1,4 @@
 import Component from "../engine/Component.js"
-import {getCanvas, getRandomX, getRandomY} from "../engine/Utilities.js"
 import Constants from "../game/Constants.js"
 import Time from "../engine/Time.js"
 
@@ -17,20 +16,17 @@ class BulletUpdateComponent extends Component {
     }
 
     update() {
-        let canvas = getCanvas()
-        let randomX = getRandomX(0, canvas.width)
-        let randomY = getRandomY((canvas.height / 2), canvas.height)
-
         //add on velocity to x and y coordinates - check for boundaries
         if (this.x >= Constants.rightBulletBoundary - 6 || this.x <= Constants.leftBulletBoundary) {
             //hit right or left side, change direction
-            this.velocityX = (-1 * this.velocityX) 
-        }
+            this.velocityX = (-1 * this.velocityX)
 
+        }
         //hasn't hit either side, continue normal
         this.x = this.x + this.velocityX * Time.secondsBetweenFrame
         this.y = this.y + this.velocityY * Time.secondsBetweenFrame
 
+        //check if ball has gone out of view, if so, delete it
     }
 
 }
