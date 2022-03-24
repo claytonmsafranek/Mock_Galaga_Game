@@ -13,7 +13,7 @@
     <script type="module">
         "use strict"
         //generic engine code
-        import { getCanvas, getContext, getRandomX, getRandomY } from "./engine/Utilities.js"
+        import { getCanvas, getContext } from "./engine/Utilities.js"
         import Time from "./engine/Time.js"
         import Input from "./engine/Input.js"
         import Game from "./engine/Game.js"
@@ -22,22 +22,19 @@
         Game.scenes.push(scene)
         Game.changeScene(0)
 
-
-
         //setup the canvas
         //let { canvas, ctx } = getCanvas()
         let canvas = getCanvas()
         let ctx = getContext(canvas)
         let gameObjects = []
 
-        // //check for arrow key input
+        //check for arrow key input
         Input.attach(document)
-
 
         function tick() {
             Game.updateScene()
             //check for timining between bullets
-            let timeToShootBullet = 600
+            let timeToShootBullet = 6000
             if (Time.timePassedBullets >= timeToShootBullet) {
                 scene.makeBullet()
                 Time.timePassedBullets = 0

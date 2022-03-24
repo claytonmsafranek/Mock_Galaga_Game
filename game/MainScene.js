@@ -33,7 +33,6 @@ class MainScene extends Scene {
             let enemyH = 25
 
             this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH))
-            console.log("pushed enemy game object")
         }
 
         //create stationary bullets on top of red enemies
@@ -48,23 +47,6 @@ class MainScene extends Scene {
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
             this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
-
-        //continuously add moving bullets
-        // function makeBullet() {
-        //     let bullets = []
-        //     let num = 5
-        //     for (let j = 0; j < num; j++) {
-        //         let offset = (canvas.width / 5)
-        //         let bulletX = 50 + offset * j + 62
-        //         let bulletY = 10
-        //         let bulletW = 5
-        //         let bulletH = 25
-
-        //         //bullets.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
-        //         this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
-        //     }
-        //     return bullets
-        // }
 
         //create bullets
         if (Time.timePassedBullets >= 200) {
