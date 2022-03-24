@@ -16,26 +16,6 @@
         import { getCanvas, getContext, getRandomX, getRandomY } from "./engine/Utilities.js"
         import Time from "./engine/Time.js"
         import Input from "./engine/Input.js"
-        //import GameObject from "./engine/GameObject.js"
-        //import Component from "./engine/Component.js"
-        //import Text from "./engine/Text.js"
-
-        //game specific code
-        //import PlayerGameObject from "./game/PlayerGameObject.js"
-        //import PlayerUpdateComponent from "./game/PlayerUpdateComponent.js"
-        //import PlayerDrawComponent from "./game/PlayerDrawComponent.js"
-
-        //import EnemyGameObject from "./game/EnemyGameObject.js"
-        //import EnemyUpdateComponent from "./game/EnemyUpdateComponent.js"
-        //import EnemyDrawComponent from "./game/EnemyDrawComponent.js"
-
-        import BulletGameObject from "./game/BulletGameObject.js"
-        //import BulletUpdateComponent from "./game/BulletUpdateComponent.js"
-        //import BulletDrawComponent from "./game/BulletDrawComponent.js"
-
-
-
-        //starting to match what prof has in his index.html - trying to remove all these imports
         import Game from "./engine/Game.js"
         import MainScene from "./game/MainScene.js"
         let scene = new MainScene()
@@ -53,106 +33,12 @@
         // //check for arrow key input
         Input.attach(document)
 
-        //define the model
-        // let playerX = canvas.width / 2
-        // let playerY = canvas.height / 1.25
-        // let playerW = 50
-        // let playerH = 50
-
-        //create text
-        // let test = new Text(100, 100, "TEST", "serif")
-        // gameObjects.push(test)
-
-        //create player
-        // let player = new PlayerGameObject(playerX, playerY, playerW, playerH)
-        // gameObjects.push(player)
-
-        //create enemies
-        // let numEnemies = 5
-        // for (let i = 0; i < numEnemies; i++) {
-        //     let offset = (canvas.width / 5)
-        //     let enemyX = 100 + offset * i
-        //     let enemyY = 0
-        //     let enemyW = 25
-        //     let enemyH = 25
-
-        //     gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH))
-        // }
-
-        //create stationary bullets
-        // let numBullets = 5
-        // for (let i = 0; i < numBullets; i++) {
-        //     let offset = (canvas.width / 5)
-        //     //bulletX looks weird, but this positions bullets right in the center of enemies
-        //     let bulletX = 50 + (canvas.width / 5) * i + 62
-        //     let bulletY = 10
-        //     let bulletW = 5
-        //     let bulletH = 25
-
-        //     //below are 5 bullets that stay stationary just to simulate where they will be firing from
-        //     gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
-        // }
-
-        //continusously push new bullet objects to screen here????
-        // let num = 5
-        // function makeBullet() {
-        //     for (let j = 0; j < num; j++) {
-        //         let offset = (canvas.width / 5)
-        //         let bulletX = 50 + offset * j + 62
-        //         let bulletY = 10
-        //         let bulletW = 5
-        //         let bulletH = 25
-
-        //         gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
-        //     }
-        // }
-
-
-
-        // function draw() {
-        //     // ctx.fillStyle = "grey"
-        //     // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-
-        //     //draw player
-        //     //player.draw(ctx)
-
-        //     //draw enemies
-        //     // for (let enemy of gameObjects) {
-        //     //     enemy.draw(ctx)
-        //     // }
-
-        //     //draw bullets
-        //     // for (let bullet of gameObjects) {
-        //     //     bullet.draw(ctx)
-        //     // }
-
-        //     //moving to scenes
-        //     Game.scene().draw(ctx)
-
-        // }
-
-        // function update() {
-        //     //player.update()
-        //     // for (let bullet of gameObjects) {
-        //     //     bullet.update()
-        //     // }
-
-        //     //moving to scenes
-        //     Game.scene().update()
-        //     if (Time.timePassedBullets >= 6000) {
-        //         scene.makeBullet()
-        //         Time.timePassedBullets = 0
-        //     }
-        //     else {
-        //         //console.log("time.timePassedBullets value = " + Time.timePassedBullets)
-        //     }
-
-        // }
 
         function tick() {
-            Game.updateScene() //*need to get this to work
+            Game.updateScene()
             //check for timining between bullets
-            if (Time.timePassedBullets >= 6000) {
+            let timeToShootBullet = 600
+            if (Time.timePassedBullets >= timeToShootBullet) {
                 scene.makeBullet()
                 Time.timePassedBullets = 0
             }
@@ -168,14 +54,6 @@
         //run it
         setInterval(tick, Time.millisecondsBetweenFrames)
 
-        //shoot bullets
-        // setInterval(makeBullet, Time.millisecondsBetweenBullets)
-        // if (Time.timePassedBullets >= 2000) {
-        //     MainScene.makeBullet()
-        // }
-        // else {
-        //     console.log("time.timePassedBullets value = " + Time.timePassedBullets)
-        // }
 
     </script>
 
