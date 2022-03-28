@@ -47,8 +47,10 @@
             Game.scene().draw(ctx)
             Game.scene().remove()
 
+            //update time variables
             Time.timePassed += Time.secondsBetweenFrame
             Time.timePassedBullets += Time.millisecondsBetweenBullets
+            Time.timePassedScore += Time.millisecondsBetweenScore
         }
 
 

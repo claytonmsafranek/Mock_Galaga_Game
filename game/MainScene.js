@@ -4,6 +4,7 @@ import BulletGameObject from "./BulletGameObject.js"
 import EnemyGameObject from "./EnemyGameObject.js"
 import { getCanvas, getRandomX, getRandomY } from "../engine/Utilities.js"
 import Time from "../engine/Time.js"
+import ScoreGameObject from "./ScoreGameObject.js"
 
 
 class MainScene extends Scene {
@@ -47,6 +48,9 @@ class MainScene extends Scene {
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
             this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
+
+        //add the score
+        this.gameObjects.push( new ScoreGameObject(20, 50))
 
     }
 
