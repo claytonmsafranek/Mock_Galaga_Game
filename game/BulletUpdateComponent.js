@@ -29,6 +29,7 @@ class BulletUpdateComponent extends Component {
         //check if ball has gone out of view, if so, delete it
         if (this.y > Constants.bottomBulletBoundary){
             console.log("mark for delete")
+            this.parent.markForDelete = true
         }
     }
 

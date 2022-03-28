@@ -48,16 +48,6 @@ class MainScene extends Scene {
             this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
         }
 
-        //create bullets
-        if (Time.timePassedBullets >= 200) {
-            console.log("makebullet called")
-            this.makeBullet()
-            //Time.timePassedBullets = 0
-        }
-        else {
-            console.log("timepassedBullets value: " + Time.timePassedBullets)
-        }
-
     }
 
 
