@@ -18,12 +18,16 @@
         import Input from "./engine/Input.js"
         import Game from "./engine/Game.js"
         import MainScene from "./game/MainScene.js"
+        import StartScene from "./game/StartScene.js"
+
+        //setup scenes
         let scene = new MainScene()
+        let startScene = new StartScene()
+        Game.scenes.push(startScene)
         Game.scenes.push(scene)
         Game.changeScene(0)
 
         //setup the canvas
-        //let { canvas, ctx } = getCanvas()
         let canvas = getCanvas()
         let ctx = getContext(canvas)
         let gameObjects = []
