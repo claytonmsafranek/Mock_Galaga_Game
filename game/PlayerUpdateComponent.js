@@ -2,6 +2,7 @@ import Component from "../engine/Component.js"
 import Constants from "../game/Constants.js"
 import Input from "../engine/Input.js"
 import Time from "../engine/Time.js"
+import Game from "../engine/Game.js"
 
 //define offset to move player
 let offset = 10
@@ -46,9 +47,8 @@ class PlayerUpdateComponent extends Component {
 
         //let bulletObjects = Game.findByType("BulletGameObject")
         //console.log(bulletObjects.length)
-        //let bullets = bulletObjects.map(w=>w.getComponent("bullet"))
-        //let minX = Math.min(...bullets.map(r=>r.x))
-        //let minY = Math.min(...bullets.map(r=>r.y))
+        //loop through all bullet objects and see if they intersect with player
+
 
     }
 }

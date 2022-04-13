@@ -10,7 +10,7 @@ class StartUpdateComponent extends Component {
 
     update() {
         this.time += Time.secondsBetweenFrame
-        if (this.time > 30) {
+        if (this.time > 50) {
             Game.changeScene(1)
         }
     }

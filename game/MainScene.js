@@ -2,7 +2,7 @@ import Scene from "../engine/Scene.js"
 import PlayerGameObject from "./PlayerGameObject.js"
 import BulletGameObject from "./BulletGameObject.js"
 import EnemyGameObject from "./EnemyGameObject.js"
-import { getCanvas, getRandomX, getRandomY } from "../engine/Utilities.js"
+import { getCanvas, getContext, getRandomX, getRandomY } from "../engine/Utilities.js"
 import Time from "../engine/Time.js"
 import ScoreGameObject from "./ScoreGameObject.js"
 
@@ -14,6 +14,7 @@ class MainScene extends Scene {
 
     start() {
         let canvas = getCanvas()
+        let ctx = getContext(canvas)
 
         //add the player
         let playerX = canvas.width / 2
@@ -40,17 +41,30 @@ class MainScene extends Scene {
         let numBullets = 5
         for (let i = 0; i < numBullets; i++) {
             let offset = (canvas.width / 5)
-            let bulletX = 50 + (canvas.width / 5) * i + 62
+            let bulletX = 50 + offset * i + 62
             let bulletY = 10
             let bulletW = 5
             let bulletH = 25
 
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
-            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
+            //this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
+
+            //going to need to just draw static circles instead of gameObjects
+            // ctx.fillStyle = "blue"
+            // ctx.strokeStyle = "blue"
+            // ctx.beginPath()
+            // ctx.arc(
+            //     bulletX,
+            //     bulletY,
+            //     bulletW,
+            //     0,
+            //     Math.PI * 2);
+            // ctx.fill()
+            // ctx.stroke()
         }
 
         //add the score
-        this.gameObjects.push( new ScoreGameObject(20, 50))
+        this.gameObjects.push(new ScoreGameObject(20, 50))
 
     }
 
@@ -65,7 +79,7 @@ class MainScene extends Scene {
             let bulletW = 5
             let bulletH = 25
 
-            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
+            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(5, 25), getRandomY(25, 5)))
         }
     }
 

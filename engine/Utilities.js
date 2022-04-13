@@ -20,19 +20,19 @@ function getContext(canvas) {
 function detectKeyDown(e) {
   switch (e.keyCode) {
     case 37:
-      console.log("left arrow key pressed")
+      //console.log("left arrow key pressed")
       Input.leftArrowPress = true
       break
     case 38:
-      console.log("up arrow key pressed")
+      //console.log("up arrow key pressed")
       Input.upArrowPress = true
       break
     case 39:
-      console.log("right arrow key pressed")
+      //console.log("right arrow key pressed")
       Input.rightArrowPress = true
       break
     case 40:
-      console.log("down arrow key pressed")
+      //console.log("down arrow key pressed")
       Input.downArrowPress = true
       break
   }
@@ -42,19 +42,19 @@ function detectKeyDown(e) {
 function detectKeyUp(e) {
   switch (e.keyCode) {
     case 37:
-      console.log("left arrow key released")
+      //console.log("left arrow key released")
       Input.leftArrowPress = false
       break
     case 38:
-      console.log("up arrow key released")
+      //console.log("up arrow key released")
       Input.upArrowPress = false
       break
     case 39:
-      console.log("right arrow key released")
+      //console.log("right arrow key released")
       Input.rightArrowPress = false
       break
     case 40:
-      console.log("down arrow key released")
+      //console.log("down arrow key released")
       Input.downArrowPress = false
       break
   }

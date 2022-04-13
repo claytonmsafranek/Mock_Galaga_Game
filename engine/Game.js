@@ -11,6 +11,10 @@ class Game {
         return Game.scene().gameObjects.filter(go => go.constructor.name == type)
     }
 
+    static findByTypeOne(type) {
+        return Game.scene().gameObjects.find(go=>go.constructor.name == type)
+    }
+
     static updateScene() {
         if (Game.nextSceneIndex != -1) {
             Game.currentSceneIndex = Game.nextSceneIndex
