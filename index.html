@@ -38,7 +38,7 @@
         function tick() {
             Game.updateScene()
             //check for timining between bullets - this might need to be moved elsewhere
-            let timeToShootBullet = 20000
+            let timeToShootBullet = 15000
             if (Time.timePassedBullets >= timeToShootBullet) {
                 scene.makeBullet()
                 Time.timePassedBullets = 0

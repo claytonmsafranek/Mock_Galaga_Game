@@ -41,13 +41,9 @@ class BulletUpdateComponent extends Component {
         let playerComp = player.getComponent("PlayerUpdateComponent")
         //let bulletComp = bullet.getComponent("BulletUpdateComponent")
 
-        if (Collisions.inCollision(playerComp, this)) {
-            //console.log("COLLISION!!")
-            
+        if (Collisions.inCollision(playerComp, this)) {            
             //remove the bullet all together to indicate it collided
             this.parent.markForDelete = true
-            //console.log("Bullet X = " + bulletX.x)
-            //console.log("Player X = " + playerX + ", Player Y = " + playerY)
         }
 
     }

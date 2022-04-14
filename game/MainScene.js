@@ -47,20 +47,11 @@ class MainScene extends Scene {
             let bulletH = 25
 
             //below are 5 bullets that stay stationary just to simulate where they will be firing from
-            //this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
+            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, null, null))
 
-            //going to need to just draw static circles instead of gameObjects
-            // ctx.fillStyle = "blue"
-            // ctx.strokeStyle = "blue"
-            // ctx.beginPath()
-            // ctx.arc(
-            //     bulletX,
-            //     bulletY,
-            //     bulletW,
-            //     0,
-            //     Math.PI * 2);
-            // ctx.fill()
-            // ctx.stroke()
+            //TO-DO
+            //might want to make these just plain old blue circles, not bullet game objects
+            //issue I was running into is that just drawing them with ctx wasn't drawing them
         }
 
         //add the score
@@ -79,7 +70,7 @@ class MainScene extends Scene {
             let bulletW = 5
             let bulletH = 25
 
-            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(5, 25), getRandomY(25, 5)))
+            this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
         }
     }
 

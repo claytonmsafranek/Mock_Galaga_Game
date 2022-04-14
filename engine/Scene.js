@@ -1,7 +1,7 @@
 class Scene {
     constructor(title) {
         this.title = title
-        //this.gameObjects = []
+        this.gameObjects = []
     }
 
     restart() {
