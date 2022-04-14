@@ -1,11 +1,23 @@
+import EnemyGameObject from "../game/EnemyGameObject.js"
+import PlayerGameObject from "../game/PlayerGameObject.js"
 import MathPoint from "./math/Point.js"
 
 
 class Collisions {
 
     static inCollision(one, two) {
-        //check for collision between bullet and player game object
+        //--------------Possibly remove this if collisions are bad during testing and just use separate axis theorem--------------
+        //check for collisions between enemy and player game object
+        if (one instanceof PlayerGameObject && two instanceof EnemyGameObject){
+            let outside = one.x > two.x + two.w ||
+                one.x + one.w < two.x ||
+                one.y > two.y + two.h ||
+                one.y + one.h < two.y
+            
+                return !outside
+        }
 
+        //check for collision between bullet and player game object
         let rectangleCenter = new MathPoint(one.x + (one.w / 2), one.y + (one.h / 2))
         let circleCenter = new MathPoint(two.x, two.y)
 

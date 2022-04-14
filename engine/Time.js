@@ -4,12 +4,16 @@ class Time {
     static timePassed = 0
 
     //specify how often to fire bullets
-    static millisecondsBetweenBullets = 20
+    static millisecondsBetweenBullets = 10
     static timePassedBullets = 0
 
     //specify how often to increment score
     static millisecondsBetweenScore = 10
     static timePassedScore = 0
+
+    //specify how often to drop down red enemies
+    static millisecondsBetweenEnemies = 3
+    static timePassedEnemies = 0
 }
 
 export default Time

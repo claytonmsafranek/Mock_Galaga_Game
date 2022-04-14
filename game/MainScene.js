@@ -34,7 +34,7 @@ class MainScene extends Scene {
             let enemyW = 25
             let enemyH = 25
 
-            this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH))
+            this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH, null))
         }
 
         //create stationary bullets on top of red enemies
@@ -55,7 +55,7 @@ class MainScene extends Scene {
         }
 
         //add the score
-        this.gameObjects.push(new ScoreGameObject(20, 50))
+        this.gameObjects.push(new ScoreGameObject(20, canvas.height - 50))
 
     }
 
@@ -71,6 +71,21 @@ class MainScene extends Scene {
             let bulletH = 25
 
             this.gameObjects.push(new BulletGameObject(bulletX, bulletY, bulletW, bulletH, getRandomX(25, 5), getRandomY(5, 25)))
+        }
+    }
+
+    spawnEnemy() {
+        let canvas = getCanvas()
+        let numEnemies = 5
+        for (let i = 0; i < numEnemies; i++) {
+            let offset = (canvas.width / 5)
+            let enemyX = 100 + offset * i
+            let enemyY = 11
+            let enemyW = 25
+            let enemyH = 25
+            //let velocityY = 1
+
+            this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH, getRandomY(1, 3)))
         }
     }
 

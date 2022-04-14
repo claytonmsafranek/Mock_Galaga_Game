@@ -17,6 +17,9 @@ class Constants {
     static playerHeight = 50
     static enemyArea = 25
 
+    //enemy boundaries
+    static bottomEnemyBoundary = getCanvas().height
+
     
 }
 

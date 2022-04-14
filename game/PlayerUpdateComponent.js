@@ -36,18 +36,6 @@ class PlayerUpdateComponent extends Component {
             this.y += offset * Time.secondsBetweenFrame
         }
 
-        //check if player is colliding with a bullet at all
-        let playerTopLeft = this.x
-        let playerTopRight = this.x + Constants.playerWidth
-        let playerBottomLeft = this.y + Constants.playerHeight
-        let playerBottomRight = this.x + Constants.playerWidth + Constants.playerHeight
-
-        //let pos = this.parent.getComponent("bullet")
-
-
-        //let bulletObjects = Game.findByType("BulletGameObject")
-        //console.log(bulletObjects.length)
-        //loop through all bullet objects and see if they intersect with player
 
 
     }

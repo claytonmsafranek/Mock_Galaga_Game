@@ -6,7 +6,7 @@ import TextDraw from "../engine/TextDraw.js"
 class ScoreGameObject extends GameObject {
     constructor(x, y) {
         super()
-        this.components.push(new Text(this, x, y, "", "20px sans"))
+        this.components.push(new Text(this, x, y, "", "50px sans"))
         this.components.push(new TextDraw(this, "white", "transparent"))
         this.components.push(new ScoreUpdateComponent(this))
     }

@@ -14,7 +14,6 @@ class BulletUpdateComponent extends Component {
         this.h = h
         this.velocityX = velocityX
         this.velocityY = velocityY
-        //this.timePassed = 0
     }
 
     update() {
@@ -37,13 +36,15 @@ class BulletUpdateComponent extends Component {
 
         //check if bullet hit a player
         let player = Game.findByTypeOne("PlayerGameObject")
-        let bullet = Game.findByTypeOne("BulletGameObject")
         let playerComp = player.getComponent("PlayerUpdateComponent")
         //let bulletComp = bullet.getComponent("BulletUpdateComponent")
 
         if (Collisions.inCollision(playerComp, this)) {            
             //remove the bullet all together to indicate it collided
             this.parent.markForDelete = true
+
+            //go back to start scene
+            //Game.changeScene(0)
         }
 
     }

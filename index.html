@@ -35,19 +35,28 @@
         //check for arrow key input
         Input.attach(document)
 
+
+
         function tick() {
             Game.updateScene()
-            //check for timining between bullets - this might need to be moved elsewhere
-            let timeToShootBullet = 15000
+            //check for timining between bullets
+            let timeToShootBullet = 10000
             if (Time.timePassedBullets >= timeToShootBullet) {
                 scene.makeBullet()
                 Time.timePassedBullets = 0
+            }
+            //check for timing between enemy drop downs
+            let timeToSpawnEnemy = 20000
+            if (Time.timePassedEnemies >= timeToSpawnEnemy) {
+                scene.spawnEnemy()
+                Time.timePassedEnemies = 0
             }
             Game.scene().update(ctx)
             Game.scene().draw(ctx)
             Game.scene().remove()
 
             //update time variables
+            Time.timePassedEnemies += Time.millisecondsBetweenEnemies
             Time.timePassed += Time.secondsBetweenFrame
             Time.timePassedBullets += Time.millisecondsBetweenBullets
             Time.timePassedScore += Time.millisecondsBetweenScore
