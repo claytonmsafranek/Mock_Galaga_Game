@@ -33,7 +33,6 @@ class BulletUpdateComponent extends Component {
             this.parent.markForDelete = true
         }
 
-
         //check if bullet hit a player
         let player = Game.findByTypeOne("PlayerGameObject")
         let playerComp = player.getComponent("PlayerUpdateComponent")
@@ -41,10 +40,10 @@ class BulletUpdateComponent extends Component {
 
         if (Collisions.inCollision(playerComp, this)) {            
             //remove the bullet all together to indicate it collided
-            this.parent.markForDelete = true
+            //this.parent.markForDelete = true
 
             //go back to start scene
-            //Game.changeScene(0)
+            Game.changeScene(2)
         }
 
     }

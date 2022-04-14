@@ -85,7 +85,7 @@ class MainScene extends Scene {
             let enemyH = 25
             //let velocityY = 1
 
-            this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH, getRandomY(1, 3)))
+            this.gameObjects.push(new EnemyGameObject(enemyX, enemyY, enemyW, enemyH, getRandomY(10, 20)))
         }
     }
 

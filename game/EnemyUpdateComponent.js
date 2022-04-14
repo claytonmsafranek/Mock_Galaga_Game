@@ -24,7 +24,8 @@ class EnemyUpdateComponent extends Component {
     update() {
         //increase position of enemy based on velocity Y
         if(this.velocityY != null) {
-            this.y += this.velocityY 
+            //this.y += this.velocityY
+            this.y = this.y + this.velocityY * Time.secondsBetweenFrame
         }
 
 
@@ -33,10 +34,10 @@ class EnemyUpdateComponent extends Component {
         let playerComp = player.getComponent("PlayerUpdateComponent")
         if (Collisions.inCollision(playerComp, this)){
             //remove the enemy all together to indicate it collided
-            this.parent.markForDelete = true
+            //this.parent.markForDelete = true
 
             //go back to start scene
-            //Game.changeScene(0)
+            Game.changeScene(2)
         }
 
         //check if enemy has gone off scrren, if so remove it

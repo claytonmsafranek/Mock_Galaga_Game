@@ -19,12 +19,15 @@
         import Game from "./engine/Game.js"
         import MainScene from "./game/MainScene.js"
         import StartScene from "./game/StartScene.js"
+        import EndScene from "./game/EndScene.js"
 
         //setup scenes
         let scene = new MainScene()
         let startScene = new StartScene()
+        let endScene = new EndScene()
         Game.scenes.push(startScene)
         Game.scenes.push(scene)
+        Game.scenes.push(endScene)
         Game.changeScene(0)
 
         //setup the canvas
@@ -46,7 +49,7 @@
                 Time.timePassedBullets = 0
             }
             //check for timing between enemy drop downs
-            let timeToSpawnEnemy = 20000
+            let timeToSpawnEnemy = 15000
             if (Time.timePassedEnemies >= timeToSpawnEnemy) {
                 scene.spawnEnemy()
                 Time.timePassedEnemies = 0
