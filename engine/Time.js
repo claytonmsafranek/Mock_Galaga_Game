@@ -12,7 +12,7 @@ class Time {
     static timePassedScore = 0
 
     //specify how often to drop down red enemies
-    static millisecondsBetweenEnemies = 3
+    static millisecondsBetweenEnemies = 5
     static timePassedEnemies = 0
 }
 

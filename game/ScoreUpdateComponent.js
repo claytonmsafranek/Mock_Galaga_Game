@@ -50,6 +50,7 @@ class ScoreUpdateComponent extends Component {
                 break
             case 160:
                 Time.millisecondsBetweenBullets = 90
+                Time.millisecondsBetweenEnemies = 20
                 console.log("Millisecs between bullets = " + Time.millisecondsBetweenBullets)
                 break
             case 180:

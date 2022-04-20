@@ -16,6 +16,12 @@ class MainScene extends Scene {
         let canvas = getCanvas()
         let ctx = getContext(canvas)
 
+
+        //make sure that all of the timings are reset to defaults at the start
+        Time.millisecondsBetweenBullets = 10
+        Time.millisecondsBetweenEnemies = 5
+
+
         //add the player
         let playerX = canvas.width / 2
         let playerY = canvas.height / 1.25
