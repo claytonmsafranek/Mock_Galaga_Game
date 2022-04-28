@@ -42,7 +42,7 @@ class EnemyUpdateComponent extends Component {
 
         //check if enemy has gone off scrren, if so remove it
         if (this.y > Constants.bottomEnemyBoundary) {
-            console.log(" enemy marked for delete")
+            //console.log(" enemy marked for delete")
             this.parent.markForDelete = true
         }
 
