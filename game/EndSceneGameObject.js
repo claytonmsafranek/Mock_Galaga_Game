@@ -6,6 +6,7 @@ import Game from "../engine/Game.js"
 import { getCanvas, getContext } from "../engine/Utilities.js"
 import PrefabTextSmall from "../engine/PrefabTextSmall.js"
 import PrefabTextLarge from "../engine/PrefabTextLarge.js"
+import { checkLeaderboard, getLeaderboard, postPlayerScore } from "../engine/LeaderboardUtils.js"
 
 
 
@@ -18,7 +19,7 @@ class EndSceneGameObject extends GameObject {
     }
 
     //might have to add in async to this function before start()
-    start() {
+    async start() {
         let canvas = getCanvas()
 
         //add the game over text
@@ -29,31 +30,47 @@ class EndSceneGameObject extends GameObject {
         let scoreObject = Game.findInOtherScene("ScoreGameObject", 1)
         let playerScore = scoreObject.getComponent("ScoreUpdateComponent")
         this.components.push(new PrefabTextSmall("Game Over!", (canvas.width / 2) - 100, canvas.height / 2 + 50, "Score: " + playerScore.score))
-
         this.components.push(new EndSceneUpdateComponent(this))
 
-        // this will be how I POST data to server
-        // let postData = {
-        //     score: 100,
-        //     name: 'joe'
-        // };
 
-        //interact with game API
-        fetch('http://ec2-44-202-119-23.compute-1.amazonaws.com/api/getLeaderboard',
-            {
-                method: 'GET'
-                //body: JSON.stringify(postData) //USED IN POST
-            })
-            .then((response) => {
-                //get raw json object
-                return response.json();
-            })
-            .then((myJson) => {
-                //access elements of raw json object
-                console.log(myJson);
-                let leaderboard = myJson;
-                console.log(leaderboard.player);
-            });
+        //getLeaderboard calls game API to retrieve the top 5 players in descending order
+        let leaderboard = await getLeaderboard()
+        console.log(leaderboard)
+
+
+        //POST data - score to send to API
+        let postData = {
+            score: playerScore.score
+        }
+
+        //checkLeaderboard calls game API to see whether or not player's score is good enough
+        let scoreGoodEnough = await checkLeaderboard(postData)
+        console.log(scoreGoodEnough)
+
+        let usersName = ''
+        if (scoreGoodEnough.scoreIsGoodEnough == 'true'){
+            //player's score is high enough to be on leaderboard, prompt for input
+            console.log("Is user's score good enough: " + scoreGoodEnough)
+            usersName = prompt("Please enter your name")
+            console.log("users name: " + usersName)
+
+            //json data to send to API
+            let toAdd = {
+                name : usersName,
+                score : playerScore.score
+            }
+            //call game API postPlayerScore to post the players name and score to be added to leaderboard
+            let returnVal = await postPlayerScore(toAdd)
+            console.log(returnVal)
+
+        }
+        else {
+            //player's score is NOT high enough to be on leaderboard, just show leaderboard
+            console.log("User's score not good enough. Show leaderboard here")
+        }
+
+
+
 
     }
 
