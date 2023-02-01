@@ -1,1 +1,2 @@
 # Mock_Galaga_Game
+This mock Galaga game is a project whre I designed a custom game engine written in javascript. In addition, there is also a leaderbaord API written in Python with the use of the Python Flask Module, to connect to a MySQL database running on an AWS EC2 server instance to allow for a persistent leaderboard. Since this game is designed to run in the browser, this game is also hosted on an AWS EC2 server instance and is able to be played from anywhere.
