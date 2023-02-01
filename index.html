@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Brick Mover</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <canvas id="canv"></canvas>
+
+    <script type="module">
+        "use strict"
+        //generic engine code
+        import { getCanvas, getContext } from "./engine/Utilities.js"
+        import Time from "./engine/Time.js"
+        import Input from "./engine/Input.js"
+        import Game from "./engine/Game.js"
+        import MainScene from "./game/MainScene.js"
+        import StartScene from "./game/StartScene.js"
+        import EndScene from "./game/EndScene.js"
+        import LeaderboardScene from "./game/LeaderboardScene.js"
+
+        //setup scenes
+        let scene = new MainScene()
+        let startScene = new StartScene()
+        let endScene = new EndScene()
+        let leaderboardScene = new LeaderboardScene()
+
+        Game.scenes.push(startScene)
+        Game.scenes.push(scene)
+        Game.scenes.push(endScene)
+        Game.scenes.push(leaderboardScene)
+        Game.changeScene(0)
+
+        console.log(Game.scenes)
+
+        //setup the canvas
+        let canvas = getCanvas()
+        let ctx = getContext(canvas)
+        let gameObjects = []
+
+        //check for arrow key input
+        Input.attach(document)
+
+
+
+        function tick() {
+            Game.updateScene()
+            //check for timining between bullets
+            let timeToShootBullet = 8000
+            if (Time.timePassedBullets >= timeToShootBullet) {
+                scene.makeBullet()
+                Time.timePassedBullets = 0
+            }
+            //check for timing between enemy drop downs
+            let timeToSpawnEnemy = 15000
+            if (Time.timePassedEnemies >= timeToSpawnEnemy) {
+                scene.spawnEnemy()
+                Time.timePassedEnemies = 0
+            }
+            Game.scene().update(ctx)
+            Game.scene().draw(ctx)
+            Game.scene().remove()
+
+            //update time variables
+            Time.timePassedEnemies += Time.millisecondsBetweenEnemies
+            Time.timePassed += Time.secondsBetweenFrame
+            Time.timePassedBullets += Time.millisecondsBetweenBullets
+            Time.timePassedScore += Time.millisecondsBetweenScore
+        }
+
+
+        //run it
+        setInterval(tick, Time.millisecondsBetweenFrames)
+
+
+    </script>
+
+
+</body>
