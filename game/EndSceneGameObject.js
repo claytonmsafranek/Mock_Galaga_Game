@@ -33,10 +33,6 @@ class EndSceneGameObject extends GameObject {
         this.components.push(new EndSceneUpdateComponent(this))
 
 
-        //getLeaderboard calls game API to retrieve the top 5 players in descending order
-        let leaderboard = await getLeaderboard()
-        console.log(leaderboard)
-
 
         //POST data - score to send to API
         let postData = {
@@ -48,7 +44,7 @@ class EndSceneGameObject extends GameObject {
         console.log(scoreGoodEnough)
 
         let usersName = ''
-        if (scoreGoodEnough.scoreIsGoodEnough == 'true'){
+        if (scoreGoodEnough.scoreIsGoodEnough == 'true') {
             //player's score is high enough to be on leaderboard, prompt for input
             console.log("Is user's score good enough: " + scoreGoodEnough)
             usersName = prompt("Please enter your name")
@@ -56,8 +52,8 @@ class EndSceneGameObject extends GameObject {
 
             //json data to send to API
             let toAdd = {
-                name : usersName,
-                score : playerScore.score
+                name: usersName,
+                score: playerScore.score
             }
             //call game API postPlayerScore to post the players name and score to be added to leaderboard
             let returnVal = await postPlayerScore(toAdd)
@@ -66,8 +62,9 @@ class EndSceneGameObject extends GameObject {
         }
         else {
             //player's score is NOT high enough to be on leaderboard, just show leaderboard
-            console.log("User's score not good enough. Show leaderboard here")
+            console.log("User's score not good enough. Move to leaderboard scene.")
         }
+
 
 
 

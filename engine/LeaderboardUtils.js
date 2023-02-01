@@ -63,6 +63,4 @@ async function postPlayerScore(inputData) {
 }
 
 
-
-
 export { checkLeaderboard, getLeaderboard, postPlayerScore }
